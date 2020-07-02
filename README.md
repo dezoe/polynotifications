@@ -13,7 +13,6 @@ $ sudo make install
 
 Download polynotifications and make it executable.
 ```ini
-# This is an example
 $ cd ~/.config/polybar
 $ git clone https://github.com/alnj/polynotifications && cd polynotifications
 $ chmod +x polynotifications.sh
