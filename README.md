@@ -23,7 +23,7 @@ Create the polynotifications module in your polybar config and add it to your ba
 [bar/mybar]
 modules-left = workspaces polynotifications
 
-[module/polynotificationss]
+[module/polynotifications]
 type = custom/script
 # Change the path to where you downloaded polynotifications
 exec = ~/.config/polybar/polynotifications/polynotifications.sh
