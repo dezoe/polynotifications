@@ -20,14 +20,12 @@ char_limit=100
 # Mouse1 command. Since this is in a variable, complex
 # commands might not work as expected so edit the
 # formatting directly below.
-# This example opens the notification history in nano
+# This example opens the notification history in vim
 # in alacritty
-mouse1="alacritty -e sh -c \"nano $file\""
+mouse1="alacritty -e sh -c \"vim $file\""
 
 # Formatting help:
 # https://github.com/polybar/polybar/wiki/Formatting#foreground-color-f
-# The example given opens alacritty with
-# the notification history in vim
 left="%{A1:$mouse1:}%{+u}%{u#F8E5AB}"
 right="%{-u}%{A}"
 
