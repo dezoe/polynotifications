@@ -1,4 +1,4 @@
-[!polynotifications](polynotifications.png)
+![polynotifications](polynotifications.png)
 # polynotifications
 Display notifications in your bar using tiramisu as the notification daemon.
 Currently a work-in-progress. Multi-line notifications buggy at the moment.
@@ -13,7 +13,6 @@ $ sudo make install
 
 Download polynotifications and make it executable.
 ```ini
-# This is an example
 $ cd ~/.config/polybar
 $ git clone https://github.com/alnj/polynotifications && cd polynotifications
 $ chmod +x polynotifications.sh
@@ -24,7 +23,7 @@ Create the polynotifications module in your polybar config and add it to your ba
 [bar/mybar]
 modules-left = workspaces polynotifications
 
-[module/polynotifs]
+[module/polynotificationss]
 type = custom/script
 # Change the path to where you downloaded polynotifications
 exec = ~/.config/polybar/polynotifications/polynotifications.sh
@@ -32,6 +31,8 @@ format = <label>
 label-padding = 1
 tail = true
 ```
+
+**If you are using another notification daemon such as dunst you must kill it as only one notification daemon can be active.** `pkill dunst`
 
 Check out the top of `polynotifications.sh` for some settings.
 
