@@ -32,6 +32,8 @@ label-padding = 1
 tail = true
 ```
 
+**If you are using another notification daemon such as dunst you must kill it as only one notification daemon can be active.** `pkill dunst`
+
 Check out the top of `polynotifications.sh` for some settings.
 
 Feel free to open an issue with feature requests or bugs.
