@@ -1,4 +1,4 @@
-[!polynotifications](polynotifications.png)
+![polynotifications](polynotifications.png)
 # polynotifications
 Display notifications in your bar using tiramisu as the notification daemon.
 Currently a work-in-progress. Multi-line notifications buggy at the moment.
