@@ -7,7 +7,7 @@
 file="$HOME/.config/polybar/.notifs"
 
 # How long each line stays on screen
-duration=1.1
+duration=6.5
 
 # Set to 1  to keep last line of last notification on screen
 keep_last=
@@ -46,31 +46,34 @@ is_notif_complete() {
 # Parse tiramisu and write notifications
 # into the notification history file
 touch "$file"
-tiramisu |
+tiramisu -j |
 	while read -r notif; do
 		# Get relevant data from tiramisu json output
-		_=${notif#*\"app_name\": \"}
-		app=${_%%\",*}
+		#_=${notif#*\"app_name\": \"}
+		#app=${_%%\",*}
+		app=$(echo $notif | jq '.app_name' | xargs)
 
-		_=${notif#*\"summary\": \"}
-		summary="${_%%\",*}"
+		#_=${notif#*\"summary\": \"}
+		#summary="${_%%\",*}"
+		summary=$(echo $notif | jq '.summary' | xargs)
 		test "$show_app_name" = 1 && summary="$app: $summary"
 
-		_=${notif#*\"body\": \"}
-		body="${_%\" \}}"
+		#_=${notif#*\"body\": \"}
+		#body="${_%\" \}}"
+		body=$(echo $notif | jq '.body' | xargs)
 		test "$show_app_name" = 1 && body="$app: $body"
 		# As body can have newlines, keep adding
 		# them until reaching end of json
-		while ! is_notif_complete; do
-			while read -r notif; do
-				if [ "$show_app_name" = 1 ]; then
-					body=$(printf "$body\n$app: ${notif%\" \}}")
-				else
-					body=$(printf "$body\n${notif%\" \}}")
-				fi
-				break
-			done
-		done
+		#while ! is_notif_complete; do
+		#	while read -r notif; do
+		#		if [ "$show_app_name" = 1 ]; then
+		#			body=$(printf "$body\n$app: ${notif%\" \}}")
+		#		else
+		#			body=$(printf "$body\n${notif%\" \}}")
+		#		fi
+		#		break
+		#	done
+		#done
 
 		# Fall back to summary if body is empty
 		test -z "${body#$app\: }" && body="$summary"
